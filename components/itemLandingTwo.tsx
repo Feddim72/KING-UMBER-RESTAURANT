@@ -2,10 +2,10 @@ import ItemMenu from "./itemMenu";
 
 export const ItemLandingTwo = () => {
   return (
-    <div className="text--shadow relative min-h-screen w-full"> 
+    <div className="text--shadow relative min-h-screen w-full">
       <div className="landing__two pt-12 pb-11 flex flex-col items-center min-h-[100vh] w-full ">
-        <div className="bg-blackA-transparent absolute landing__two-1 left-0 -top-[1px]"/>
-        <h2 className="text-5xl mb-6 z-10">TODAY'S SPECIALS</h2>
+        <div className="bg-blackA-transparent absolute landing__two-1 left-0 -top-[1px]" />
+        <h2 className="text-5xl mb-6 z-10">{`TODAY'S SPECIALS`}</h2>
         <div className="max-w-7xl w-full flex flex-row justify-between items-start flex-wrap z-10 tablet:justify-center">
           <div className="p-4 w-[380px] flex flex-col items-center justify-center">
             <p className="text-[#ff5269] text-[28px] leading-[1.4em] font-medium tracking-wide">

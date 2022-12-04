@@ -4,7 +4,7 @@ export const ItemLandingThree = () => {
   return (
     <div className="landingThree py-24 px-3 flex flex-col justify-center  items-center">
       <h3 className="text-4xl mb-6 text-center">
-        Looking for a night out that's both cozy
+        {`Looking for a night out that's both cozy`}
         <span className="italic"> and</span> delicious?
       </h3>
       <p className="font-raleway text-base text-gray-500">
