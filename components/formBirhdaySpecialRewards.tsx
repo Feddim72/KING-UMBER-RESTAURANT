@@ -1,4 +1,4 @@
-export const ItemLandingFormBirhday = () => {
+export const FormBirhdaySpecialRewards = () => {
   return (
     <div className="bg-gray-300 min-w-full flex flex-col items-center p-4 py-24 tablet:py-10">
       <h5 className="text-4xl text-gray-8 mb-7 text-center">

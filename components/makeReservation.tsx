@@ -1,6 +1,6 @@
 import A from "./A";
 
-export const ItemLandingThree = () => {
+export const MakeReservation = () => {
   return (
     <div className="landingThree py-24 px-3 flex flex-col justify-center  items-center">
       <h3 className="text-4xl mb-6 text-center">

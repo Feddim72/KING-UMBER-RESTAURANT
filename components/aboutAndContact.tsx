@@ -1,6 +1,6 @@
 import React from "react";
 
-export const LandingBottomDescription = () => {
+export const AboutAndContact = () => {
   return (
     <div className="w-full bg-gray-300 py-28 px-3 flex justify-center tablet:py-10">
       <div className="flex flex-row justify-between max-w-7xl w-full tablet:flex-col">
