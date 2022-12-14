@@ -102,23 +102,25 @@ export const TodaysSpecials = () => {
         <div className="bg-blackA-transparent absolute landing__two-1 left-0 -top-[1px]" />
         <h2 className="text-5xl mb-6 z-10">{`TODAY'S SPECIALS`}</h2>
         <div className="max-w-7xl w-full flex flex-row justify-between items-start flex-wrap z-10 tablet:justify-center">
-          {todayMenu.map(({ name, items }) => {
-            return (
-              <div className="p-4 w-[380px] flex flex-col items-center justify-center">
-                <p className="text-[#ff5269] text-[28px] leading-[1.4em] font-medium tracking-wide">
-                  {name}
-                </p>
+          {todayMenu.map(({ name, items }, index) => (
+            <div
+              key={index}
+              className="p-4 w-[380px] flex flex-col items-center justify-center"
+            >
+              <p className="text-[#ff5269] text-[28px] leading-[1.4em] font-medium tracking-wide">
+                {name}
+              </p>
 
-                {items.map(({ description, price, title }) => (
-                  <ItemMenu
-                    description={description}
-                    price={price}
-                    title={title}
-                  />
-                ))}
-              </div>
-            );
-          })}
+              {items.map(({ description, price, title }, index) => (
+                <ItemMenu
+                  key={index}
+                  description={description}
+                  price={price}
+                  title={title}
+                />
+              ))}
+            </div>
+          ))}
         </div>
       </div>
     </div>

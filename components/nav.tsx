@@ -17,7 +17,7 @@ export const Nav = () => {
         } absolute top-12 z-40 flex flex-col justify-center items-center`}
       >
         <A href="/" className={`${scrollActualCount > 400 && "hidden"}`}>
-          <Image src={"/logo.png"} width={200} height={190} quality={95} />
+          <Image src={"/logo.png"} width={200} height={190} quality={95} alt="logo"/>
         </A>
         <div
           className={`nav__link ${
