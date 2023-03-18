@@ -1,13 +1,13 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import { FollowUsOnInstagram } from "../components/followUsOnInstagram";
-import { FormBirhdaySpecialRewards } from "../components/formBirhdaySpecialRewards";
-import { MakeReservation } from "../components/makeReservation";
-import { TodaysSpecials } from "../components/todaysSpecials";
-import { AboutAndContact } from "../components/aboutAndContact";
-import { Nav } from "../components/nav";
-import styles from "../styles/Home.module.css";
-import { Footer } from "../components/footer";
+import type { NextPage } from 'next'
+import Head from 'next/head'
+import { AboutAndContact } from '../components/aboutAndContact'
+import { FollowUsOnInstagram } from '../components/followUsOnInstagram'
+import { Footer } from '../components/footer'
+import { FormBirhdaySpecialRewards } from '../components/formBirhdaySpecialRewards'
+import { MakeReservation } from '../components/makeReservation'
+import { Nav } from '../components/nav'
+import { TodaysSpecials } from '../components/todaysSpecials'
+import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
   return (
@@ -18,7 +18,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={`${styles.main} text-white relative`}>
+      <main className={`${styles.main} relative text-white`}>
         <Nav />
         <TodaysSpecials />
         <MakeReservation />
@@ -27,9 +27,9 @@ const Home: NextPage = () => {
         <AboutAndContact />
       </main>
 
-      <Footer className={styles.footer} />
+      <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

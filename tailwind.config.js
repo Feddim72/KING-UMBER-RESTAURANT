@@ -30,8 +30,8 @@ module.exports = {
     ],
   },
   theme: {
-    fontFamily:{
-      'raleway':['raleway']
+    fontFamily: {
+      raleway: ['raleway'],
     },
     colors: {
       white: '#FFFFFF',
@@ -56,10 +56,10 @@ module.exports = {
         500: '#FF641E',
       },
       gray: {
-        17:"#171717",
-        "1f":"#1f1f1f",
-        08:'#000000cc',
-        f2:'#000000f2',
+        17: '#171717',
+        '1f': '#1f1f1f',
+        08: '#000000cc',
+        f2: '#000000f2',
         40: '#F2F2F2',
         50: '#FcFcFc',
         100: '#F5F5F5',
@@ -92,7 +92,6 @@ module.exports = {
     extend: {
       spacing: {
         112: '28rem',
-        'footer-screen': 'calc(100vh - 75px - 350px)',
       },
       keyframes: {
         'fade-in': {
@@ -151,13 +150,6 @@ module.exports = {
           background:
             "url('/bg-pattern-left.svg') repeat-y , url('/bg-pattern-right.svg') repeat-y right ",
           backgroundSize: '16%',
-        },
-        '.bg-pattern-newsletter': {
-          background:
-            "url('/bg-pattern-left.svg') -310px 838px/40% repeat-y , url('/bg-pattern-right.svg') 1579px -290px/40% repeat-y ",
-        },
-        '.bg-cloud': {
-          background: 'url("/cloud.svg") no-repeat center',
         },
       })
     },

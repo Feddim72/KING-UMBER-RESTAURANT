@@ -1,46 +1,67 @@
-import Image from "next/image";
-import React from "react";
-import A from "./A";
-import ActualCountSkroll from "./actualCountSkroll";
+import Image from 'next/image'
+import Link from 'next/link'
+import ActualCountSkroll from './actualCountSkroll'
 
 export const Nav = () => {
-  const { scrollActualCount } = ActualCountSkroll();
+  const { scrollActualCount } = ActualCountSkroll()
 
   return (
     <>
       <div
         className={`${
           scrollActualCount > 550 &&
-          "bg-black !opacity-100 !fixed !top-0 transition-all duration-500"
+          '!fixed !top-0 bg-black !opacity-100 transition-all duration-500'
         } ${
-          scrollActualCount > 400 && "w-full"
-        } absolute top-12 z-40 flex flex-col justify-center items-center`}
+          scrollActualCount > 400 && 'w-full'
+        } absolute top-12 z-40 flex flex-col items-center justify-center`}
       >
-        <A href="/" className={`${scrollActualCount > 400 && "hidden"}`}>
-          <Image src={"/logo.png"} width={200} height={190} quality={95} alt="logo"/>
-        </A>
-        <div
-          className={`nav__link ${
-            scrollActualCount > 400 && "!my-2"
-          } children:leading-[1em] children:tracking-wide children:m-4 text-base text-white mb-11 mt-2 flex flex-row justify-center flex-wrap sticky top-5`}
-        >
-          <A href="/menu" text="MENU" />
-          <A href="/" text="HOME" />
-          <A href="/todaySpecial" text="TODAY'S SPECIAL" />
-          <A href="/reservation" text="RESERVATIONS" />
-          <A href="/birthdayClub" text="BIRTHDAY CLUB" />
-          <A href="/instagram" text="INSTAGRAM" />
-          <A href="/location" text="LOCATION" />
-          <A href="/recipes" text="RECIPES" />
-          <A href="/giftCards" text="GIFT CARDS" />
-          <A href="/orderOnline" text="ORDER ONLINE" />
+        <div className={`${scrollActualCount > 400 && 'hidden'}`}>
+          <Link href="/">
+            <Image src={'/logo.png'} width={200} height={190} quality={95} alt="logo" />
+          </Link>
         </div>
+        <ul
+          className={`nav__link ${
+            scrollActualCount > 400 && '!my-2'
+          } sticky top-5 mb-11 mt-2 flex flex-row flex-wrap justify-center text-base text-white children:m-4 children:leading-[1em] children:tracking-wide`}
+        >
+          <li>
+            <Link href="/menu">MENU</Link>
+          </li>
+          <li>
+            <Link href="/">HOME</Link>
+          </li>
+          <li>
+            <Link href="/todaySpecial">{`TODAY'S SPECIAL`}</Link>
+          </li>
+          <li>
+            <Link href="/reservation">RESERVATIONS</Link>
+          </li>
+          <li>
+            <Link href="/birthdayClub">BIRTHDAY CLUB</Link>
+          </li>
+          <li>
+            <Link href="/instagram">INSTAGRAM</Link>
+          </li>
+          <li>
+            <Link href="/location">LOCATION</Link>
+          </li>
+          <li>
+            <Link href="/recipes">RECIPES</Link>
+          </li>
+          <li>
+            <Link href="/giftCards">GIFT CARDS</Link>
+          </li>
+          <li>
+            <Link href="/orderOnline">ORDER ONLINE</Link>
+          </li>
+        </ul>
       </div>
 
       <div className="relative min-h-screen w-full">
         <div className="nav min-h-screen w-full"></div>
-        <div className="absolute left-0 top-0   flex flex-col items-center  min-h-screen w-full bg-black-transparent">
-          <h1 className="mb-4 text-5xl leading-[1.1em] font-normal tracking-wide text-center mt-[340px]">
+        <div className="absolute left-0 top-0   flex min-h-screen w-full  flex-col items-center bg-black-transparent">
+          <h1 className="mb-4 mt-[340px] text-center text-5xl font-normal leading-[1.1em] tracking-wide">
             KING UMBER RESTAURANT
           </h1>
           <div className="flex flex-col gap-1">
@@ -50,5 +71,5 @@ export const Nav = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
