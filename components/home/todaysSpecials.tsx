@@ -96,7 +96,7 @@ const todayMenu = [
 export default function TodaysSpecials() {
   return (
     <div className="text--shadow relative min-h-screen w-full">
-      <div className="flex min-h-screen w-full flex-col items-center bg-[url('../../public/pizaabg.jpg')] bg-cover bg-center bg-no-repeat pt-12 pb-11 ">
+      <div className="bg-todays-specials flex min-h-screen w-full flex-col items-center pt-12 pb-11 ">
         <div className="height-webkit-fill-available width-webkit-fill-available absolute left-0 -top-[1px] bg-blackA-transparent" />
         <h2 className="z-10 mb-6 text-5xl text-white">{`TODAY'S SPECIALS`}</h2>
         <div className="z-10 flex w-full max-w-7xl flex-row flex-wrap items-start justify-between tablet:justify-center">

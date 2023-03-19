@@ -43,7 +43,7 @@ export const Header = () => {
       >
         <div className={`${scrollActualCount > 400 && 'hidden'}`}>
           <Link href="/">
-            <Image src={'/logo.png'} width={200} height={190} quality={95} alt="logo" />
+            <Image src={'/logo.webp'} width={200} height={190} quality={95} alt="logo" />
           </Link>
         </div>
         <ul
