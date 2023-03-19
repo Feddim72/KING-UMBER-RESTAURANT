@@ -21,8 +21,8 @@ export const Header = () => {
     { url: '/orderOnline', name: `ORDER ONLINE` },
   ])
 
-  const menuItems = navPath.map(({ name, url }) => (
-    <li>
+  const menuItems = navPath.map(({ name, url }, index) => (
+    <li key={index}>
       <Link href={url}>{name}</Link>
     </li>
   ))
