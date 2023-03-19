@@ -1,34 +1,31 @@
 import type { NextPage } from 'next'
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
-import { AboutAndContact } from '../components/aboutAndContact'
-import { FollowUsOnInstagram } from '../components/followUsOnInstagram'
-import { Footer } from '../components/footer'
-import { FormBirhdaySpecialRewards } from '../components/formBirhdaySpecialRewards'
-import { MakeReservation } from '../components/makeReservation'
-import { Nav } from '../components/nav'
-import { TodaysSpecials } from '../components/todaysSpecials'
-import styles from '../styles/Home.module.css'
+import MediaBackground from '../components/common/mediaBackground'
+
+const MakeReservation = dynamic(() => import('../components/home/makeReservation'))
+const TodaysSpecials = dynamic(() => import('../components/home/todaysSpecials'))
+const FormBirhdaySpecialRewards = dynamic(
+  () => import('../components/home/formBirhdaySpecialRewards')
+)
+const FollowUsOnInstagram = dynamic(() => import('../components/home/followUsOnInstagram'))
+const AboutAndContact = dynamic(() => import('../components/home/aboutAndContact'))
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
+    <>
       <Head>
-        <title>Pizza | Lepsza </title>
-        <meta name="description" content="pizza Rzeszow" />
+        <title>KING UMBER | RESTAURANT</title>
+        <meta name="description" content="KING UMBER | RESTAURANT" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className={`${styles.main} relative text-white`}>
-        <Nav />
-        <TodaysSpecials />
-        <MakeReservation />
-        <FormBirhdaySpecialRewards />
-        <FollowUsOnInstagram />
-        <AboutAndContact />
-      </main>
-
-      <Footer />
-    </div>
+      <MediaBackground />
+      <TodaysSpecials />
+      <MakeReservation />
+      <FormBirhdaySpecialRewards />
+      <FollowUsOnInstagram />
+      <AboutAndContact />
+    </>
   )
 }
 

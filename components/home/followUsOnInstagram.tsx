@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export const FollowUsOnInstagram = () => {
+export default function FollowUsOnInstagram() {
   return (
     <div className="flex flex-col items-center justify-center py-24 px-3 text-gray-8 tablet:py-10">
       <h6 className=" mb-10 text-6xl">Follow us on Instagram</h6>

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export const MakeReservation = () => {
+export default function MakeReservation() {
   return (
     <div className="landingThree flex flex-col items-center justify-center py-24  px-3">
       <h3 className="mb-6 text-center text-4xl">

@@ -2,21 +2,36 @@
   font-family: 'Adobe Garamond Pro Adobe Regular';
   src: url('./font/AGaramondPro-Regular.eot');
   src: url('./font/AGaramondPro-Regular.eot?#iefix') format('embedded-opentype'),
-  url('./font/AGaramondPro-Regular.woff') format('woff'),
-  url('./font/AGaramondPro-Regular.ttf') format('truetype');
+    url('./font/AGaramondPro-Regular.woff') format('woff'),
+    url('./font/AGaramondPro-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  }
+}
+
 @font-face {
   font-family: 'raleway-regular';
-  src: url('./font/raleway.regular.ttf'),
-  url('./font/raleway.regular.ttf') format('truetype');
+  src: url('./font/raleway.regular.ttf'), url('./font/raleway.regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  }
+}
+body,
+html {
+  height: 100%;
+}
+
+#__next {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1 1 auto;
+}
 
 html,
-body,p {
+body,
+p {
   padding: 0;
   margin: 0;
   font-family: 'Adobe Garamond Pro Adobe Regular';
@@ -35,50 +50,46 @@ a {
   text-shadow: 0px 0px 2px #000000;
 }
 
-.nav {
-  background: url(../public/TORI\ restaurant\ Mumbai.webp) 50%/cover no-repeat ;
+.media--home {
+  background: url(../public/tori-restaurant-mumbai.webp) 50% / cover no-repeat;
   filter: blur(1.5px);
 }
 
-.landing__two {
-  background: url(../public/pizaabg.jpg) 50%/cover no-repeat ;
-  /* filter: blur(1px); */
+.height-webkit-fill-available {
+  height: -webkit-fill-available;
 }
 
-.landing__two-1{
-  height: -webkit-fill-available;
-  width: inherit;
+.width-webkit-fill-available {
+  width: -webkit-fill-available;
 }
 
 .button__nav {
-    border: 1px solid #ffffff;
-    padding: 18px 25px ;
-    color: #ffffff;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    line-height: 1.6em;
-    font-size: 14px;
-    font-weight: 700;
-    transition: 0.5s;
-    display: inline-block;
-    margin-top: 10px;
-    min-width: 150px;
+  border: 1px solid #ffffff;
+  padding: 18px 25px;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1.6em;
+  font-size: 14px;
+  font-weight: 700;
+  transition: 0.5s;
+  display: inline-block;
+  margin-top: 10px;
+  min-width: 150px;
 }
 
 .button__nav:hover {
   background-color: #ffffff;
   text-shadow: 0px 0px 4px #000000;
-   
 }
 
 .nav__link a {
-  display: inline-block; 
-  transition: all .33s ease-in-out;
+  display: inline-block;
+  transition: all 0.33s ease-in-out;
 }
-.nav__link a:hover { 
-  transform: scale(1.2); 
+.nav__link a:hover {
+  transform: scale(1.2);
 }
-
 
 .landingThree {
   color: #2d2820;
