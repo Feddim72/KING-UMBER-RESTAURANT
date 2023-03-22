@@ -43,7 +43,15 @@ export const Header = () => {
       >
         <div className={`${scrollActualCount > 400 && 'hidden'}`}>
           <Link href="/">
-            <Image src={'/logo.webp'} width={200} height={190} quality={95} alt="logo" />
+            <Image
+              src={'/logo.webp'}
+              sizes="(max-width: 425px) 75vw,
+                    (max-width: 1200px) 20vw,
+                    15vw"
+              width={200}
+              height={190}
+              alt="logo"
+            />
           </Link>
         </div>
         <ul
@@ -58,7 +66,7 @@ export const Header = () => {
       {isHomePage && (
         <div className="w-full">
           <div className={`flex w-full flex-col items-center`}>
-            <h1 className="mb-4 mt-[340px] text-center text-5xl font-normal leading-[1.1em] tracking-wide text-white">
+            <h1 className="mb-4 mt-[470px] text-center text-5xl font-normal leading-[1.1em] tracking-wide text-white xl:mt-[340px]">
               KING UMBER RESTAURANT
             </h1>
             <div className="flex flex-col gap-1">
