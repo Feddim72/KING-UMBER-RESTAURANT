@@ -19,7 +19,7 @@ const Home: NextPage = () => {
         <meta name="description" content="KING UMBER | RESTAURANT" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <MediaBackground />
+      <MediaBackground mode="home" />
       <TodaysSpecials />
       <MakeReservation />
       <FormBirhdaySpecialRewards />
