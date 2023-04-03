@@ -1,39 +1,27 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
+import { navPathType } from './header'
 
 interface MobileMenuProps {
-  navPath: (
-    | {
-        expand: {
-          url: string
-          name: string
-        }[]
-        name: string
-        url?: undefined
-      }
-    | {
-        url: string
-        name: string
-        expand?: undefined
-      }
-  )[]
+  navPath: navPathType
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ navPath }) => {
   const [isExpandMenu, setIsExpandMenu] = useState<boolean>(false)
   const [isMobileNavToggleChecked, setIsMobileNavToggleChecked] = useState<boolean>(false)
 
+  const handleMobileNavToggleChange = () => {
+    setIsMobileNavToggleChecked(!isMobileNavToggleChecked)
+    setIsExpandMenu(false)
+
+    document.body.style.overflow = isMobileNavToggleChecked ? 'auto' : 'hidden'
+  }
   const menuItems = navPath.map(({ name, expand, url }) => {
     if (url) {
       return (
         <li key={url}>
-          <Link
-            onClick={() => {
-              setIsExpandMenu(false)
-            }}
-            href={url}
-          >
+          <Link onClick={() => handleMobileNavToggleChange()} href={url}>
             {name}
           </Link>
         </li>
@@ -41,22 +29,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navPath }) => {
     } else {
       return expand?.map(({ name, url }) => (
         <li className={`${isExpandMenu ? 'block' : 'hidden'}`} key={url}>
-          <Link
-            onClick={() => {
-              setIsExpandMenu(false)
-            }}
-            href={url}
-          >
+          <Link onClick={() => handleMobileNavToggleChange()} href={url}>
             {name}
           </Link>
         </li>
       ))
     }
   })
-  const handleMobileNavToggleChange = () => {
-    setIsMobileNavToggleChecked(!isMobileNavToggleChecked)
-    document.body.style.overflow = isMobileNavToggleChecked ? 'auto' : 'hidden'
-  }
   return (
     <>
       <style jsx global>{`
@@ -280,7 +259,50 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navPath }) => {
           <div id="mobileNavWrapper" className="nav-wrapper">
             <nav id="mobileNavigation">
               <ul className="flex flex-col flex-wrap justify-center text-2xl text-white children:m-4 children:uppercase children:leading-[0.7em] children:tracking-wide">
-                <li onClick={() => setIsExpandMenu(!isExpandMenu)}>{`Menu`}</li>
+                <li onClick={() => setIsExpandMenu(!isExpandMenu)}>
+                  <div className="flex flex-row items-center justify-center gap-2">
+                    <p>{`Menu`}</p>
+                    <>
+                      {isExpandMenu ? (
+                        <svg
+                          stroke="currentColor"
+                          fill="currentColor"
+                          stroke-width="0"
+                          viewBox="0 0 512 512"
+                          height="1em"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            fill="none"
+                            stroke-linecap="square"
+                            stroke-miterlimit="10"
+                            stroke-width="48"
+                            d="M112 328l144-144 144 144"
+                          ></path>
+                        </svg>
+                      ) : (
+                        <svg
+                          stroke="currentColor"
+                          fill="currentColor"
+                          stroke-width="0"
+                          viewBox="0 0 512 512"
+                          height="1em"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            fill="none"
+                            stroke-linecap="square"
+                            stroke-miterlimit="10"
+                            stroke-width="48"
+                            d="M112 184l144 144 144-144"
+                          ></path>
+                        </svg>
+                      )}
+                    </>
+                  </div>
+                </li>
                 {menuItems}
               </ul>
             </nav>

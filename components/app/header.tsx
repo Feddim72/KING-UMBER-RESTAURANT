@@ -6,11 +6,20 @@ import { useState } from 'react'
 import useCountSkroll from '../../hooks/useCountSkroll'
 const MobileMenu = dynamic(() => import('./mobileMenu'))
 
+export type navPathType = {
+  expand?: {
+    url: string
+    name: string
+  }[]
+  name: string
+  url?: string
+}[]
+
 export const Header = () => {
   const { route } = useRouter()
   const isHomePage = route === '/'
   const { scrollActualCount } = useCountSkroll()
-  const [navPath, setNavPath] = useState([
+  const [navPath, setNavPath] = useState<navPathType>([
     {
       expand: [
         { url: '/diningRoom', name: `Dining Room` },
@@ -34,12 +43,16 @@ export const Header = () => {
   const menuItems = navPath.map(({ name, url }) => {
     if (url) {
       return (
-        <li key={url}>
+        <li className="uppercase" key={url}>
           <Link href={url}>{name}</Link>
         </li>
       )
     } else {
-      return <li key={url}>{name}</li>
+      return (
+        <li className="uppercase" key={url}>
+          {name}
+        </li>
+      )
     }
   })
 
@@ -77,14 +90,11 @@ export const Header = () => {
               scrollActualCount > 400 && '!my-2'
             } sticky top-5 mb-11 mt-2 flex flex-row flex-wrap justify-center text-base text-white children:m-4 children:leading-[1em] children:tracking-wide`}
           >
-            <li>
-              <Link href={'/menu'}>{`Menu`}</Link>
-            </li>
             {menuItems}
           </ul>
         </div>
 
-        {isHomePage && (
+        {/* {isHomePage && (
           <div className="w-full">
             <div className={`flex w-full flex-col items-center`}>
               <h1 className="mb-4 mt-[420px] text-center text-5xl font-normal leading-[1.1em] tracking-wide text-white xl:mt-[340px]">
@@ -96,7 +106,7 @@ export const Header = () => {
               </div>
             </div>
           </div>
-        )}
+        )} */}
       </header>
 
       <MobileMenu navPath={navPath} />
