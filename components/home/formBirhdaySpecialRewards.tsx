@@ -1,6 +1,9 @@
 export default function FormBirhdaySpecialRewards() {
   return (
-    <div className="flex min-w-full flex-col items-center bg-gray-300 p-4 py-24 tablet:py-10">
+    <div
+      id="formBirhdaySpecialRewards"
+      className="flex min-w-full flex-col items-center bg-gray-300 p-4 py-24 tablet:py-10"
+    >
       <h5 className="mb-7 text-center text-4xl text-gray-8">
         Join our Birthday Club Newsletter for special rewards
       </h5>

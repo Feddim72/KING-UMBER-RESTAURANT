@@ -93,9 +93,9 @@ const todayMenu = [
   },
 ]
 
-export default function TodaysSpecials() {
+export default function TodaysSpecial() {
   return (
-    <div className="text--shadow relative min-h-screen w-full">
+    <div id="todaysSpecial" className="text--shadow relative min-h-screen w-full">
       <div className="bg-todays-specials flex min-h-screen w-full flex-col items-center pt-12 pb-11 ">
         <div className="height-webkit-fill-available width-webkit-fill-available absolute left-0 -top-[1px] bg-blackA-transparent" />
         <h2 className="z-10 mb-6 text-5xl text-white">{`TODAY'S SPECIALS`}</h2>

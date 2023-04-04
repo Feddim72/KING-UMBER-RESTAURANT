@@ -246,7 +246,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navPath }) => {
         }
       `}</style>
 
-      <div className="hidden mobileL:block">
+      <div className="hidden tablet:block">
         <input
           type="checkbox"
           name="mobile-nav-toggle"
@@ -312,7 +312,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navPath }) => {
         <header
           id="header"
           role="banner"
-          className="absolute left-0 top-0 z-[100] w-full bg-transparent"
+          className="absolute left-0 top-0 z-[101] w-full bg-transparent"
         >
           <div className="">
             <div className="flex w-full justify-center py-5">

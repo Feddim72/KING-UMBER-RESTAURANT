@@ -1,6 +1,9 @@
 export default function AboutAndContact() {
   return (
-    <div className="flex w-full justify-center bg-gray-300 py-28 px-3 tablet:py-10">
+    <div
+      id="aboutAndContact"
+      className="flex w-full justify-center bg-gray-300 py-28 px-3 tablet:py-10"
+    >
       <div className="flex w-full max-w-7xl flex-row justify-between tablet:flex-col">
         <div className="w-full max-w-3xl">
           <h6 className="flex flex-col text-4xl text-gray-8">

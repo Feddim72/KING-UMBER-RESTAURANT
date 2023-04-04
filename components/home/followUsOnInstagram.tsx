@@ -2,7 +2,10 @@ import Image from 'next/image'
 
 export default function FollowUsOnInstagram() {
   return (
-    <div className="flex flex-col items-center justify-center py-24 px-3 text-gray-8 tablet:py-10">
+    <div
+      id="followUsOnInstagram"
+      className="flex flex-col items-center justify-center py-24 px-3 text-gray-8 tablet:py-10"
+    >
       <h6 className=" mb-10 text-6xl">Follow us on Instagram</h6>
       <div className="grid grid-cols-4 grid-rows-2 gap-4">
         <Image

@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import useCountSkroll from '../../hooks/useCountSkroll'
 const MobileMenu = dynamic(() => import('./mobileMenu'))
 
@@ -13,6 +13,7 @@ export type navPathType = {
   }[]
   name: string
   url?: string
+  id?: string
 }[]
 
 export const Header = () => {
@@ -30,36 +31,64 @@ export const Header = () => {
       name: `Menu`,
     },
     { url: '/', name: `HOME` },
-    { url: '/todaySpecial', name: `TODAY'S SPECIAL` },
-    { url: '/reservation', name: `RESERVATIONS` },
-    { url: '/birthdayClub', name: `BIRTHDAY CLUB` },
-    { url: '/instagram', name: `INSTAGRAM` },
-    { url: '/location', name: `LOCATION` },
+    { id: 'todaysSpecial', name: `TODAY'S SPECIAL` },
+    { id: 'reservation', name: `RESERVATIONS` },
+    { id: 'formBirhdaySpecialRewards', name: `BIRTHDAY CLUB` },
+    { id: 'followUsOnInstagram', name: `INSTAGRAM` },
+    { id: 'aboutAndContact', name: `LOCATION` },
     { url: '/recipes', name: `RECIPES` },
     { url: '/giftCards', name: `GIFT CARDS` },
     { url: '/orderOnline', name: `ORDER ONLINE` },
   ])
 
-  const menuItems = navPath.map(({ name, url }) => {
+  const scrollToElement = (id: string) => {
+    const element = document.getElementById(id)
+    if (element) {
+      const offset = 50
+      const bodyRect = document.body.getBoundingClientRect().top
+      const elementRect = element.getBoundingClientRect().top
+      const elementPosition = elementRect - bodyRect
+      const offsetPosition = elementPosition - offset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      })
+    }
+  }
+
+  const menuItems = navPath.map(({ name, url, expand, id }) => {
     if (url) {
       return (
         <li className="uppercase" key={url}>
           <Link href={url}>{name}</Link>
         </li>
       )
-    } else {
+    } else if (expand) {
       return (
         <li className="uppercase" key={url}>
+          {name}
+        </li>
+      )
+    } else {
+      return (
+        <li
+          onClick={() => id && scrollToElement(id)}
+          className="cursor-pointer uppercase"
+          key={url}
+        >
           {name}
         </li>
       )
     }
   })
 
+  const myElementRef = useRef<HTMLDivElement>(null)
+
   return (
     <>
       <header
-        className={`absolute z-50 flex min-h-[336px] w-full justify-center mobileL:hidden  ${
+        className={`absolute z-50 flex min-h-[336px] w-full justify-center tablet:hidden  ${
           !isHomePage && 'bg-black-transparent'
         }`}
       >
@@ -93,20 +122,6 @@ export const Header = () => {
             {menuItems}
           </ul>
         </div>
-
-        {/* {isHomePage && (
-          <div className="w-full">
-            <div className={`flex w-full flex-col items-center`}>
-              <h1 className="mb-4 mt-[420px] text-center text-5xl font-normal leading-[1.1em] tracking-wide text-white xl:mt-[340px]">
-                KING UMBER RESTAURANT
-              </h1>
-              <div className="flex flex-col gap-1">
-                <button className="button__nav">ORDER ONLINE</button>
-                <button className="button__nav">BUY GIFT CARDS</button>
-              </div>
-            </div>
-          </div>
-        )} */}
       </header>
 
       <MobileMenu navPath={navPath} />

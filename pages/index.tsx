@@ -4,7 +4,7 @@ import Head from 'next/head'
 import MediaBackground from '../components/common/mediaBackground'
 
 const MakeReservation = dynamic(() => import('../components/home/makeReservation'))
-const TodaysSpecials = dynamic(() => import('../components/home/todaysSpecials'))
+const TodaysSpecials = dynamic(() => import('../components/home/todaysSpecial'))
 const FormBirhdaySpecialRewards = dynamic(
   () => import('../components/home/formBirhdaySpecialRewards')
 )
