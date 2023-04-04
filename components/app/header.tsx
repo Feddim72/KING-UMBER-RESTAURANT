@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import useCountSkroll from '../../hooks/useCountSkroll'
 const MobileMenu = dynamic(() => import('./mobileMenu'))
 
@@ -60,13 +60,13 @@ export const Header = () => {
   const menuItems = navPath.map(({ name, url, expand, id }) => {
     if (url) {
       return (
-        <li className="uppercase" key={url}>
+        <li className="uppercase" key={name}>
           <Link href={url}>{name}</Link>
         </li>
       )
     } else if (expand) {
       return (
-        <li className="uppercase" key={url}>
+        <li className="uppercase" key={name}>
           {name}
         </li>
       )
@@ -75,15 +75,13 @@ export const Header = () => {
         <li
           onClick={() => id && scrollToElement(id)}
           className="cursor-pointer uppercase"
-          key={url}
+          key={name}
         >
           {name}
         </li>
       )
     }
   })
-
-  const myElementRef = useRef<HTMLDivElement>(null)
 
   return (
     <>

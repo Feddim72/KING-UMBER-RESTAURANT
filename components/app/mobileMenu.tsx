@@ -20,7 +20,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navPath }) => {
   const menuItems = navPath.map(({ name, expand, url }) => {
     if (url) {
       return (
-        <li key={url}>
+        <li key={name}>
           <Link onClick={() => handleMobileNavToggleChange()} href={url}>
             {name}
           </Link>
@@ -28,7 +28,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navPath }) => {
       )
     } else {
       return expand?.map(({ name, url }) => (
-        <li className={`${isExpandMenu ? 'block' : 'hidden'}`} key={url}>
+        <li className={`${isExpandMenu ? 'block' : 'hidden'}`} key={name}>
           <Link onClick={() => handleMobileNavToggleChange()} href={url}>
             {name}
           </Link>
@@ -267,7 +267,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navPath }) => {
                         <svg
                           stroke="currentColor"
                           fill="currentColor"
-                          stroke-width="0"
+                          strokeWidth="0"
                           viewBox="0 0 512 512"
                           height="1em"
                           width="1em"
@@ -275,9 +275,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navPath }) => {
                         >
                           <path
                             fill="none"
-                            stroke-linecap="square"
-                            stroke-miterlimit="10"
-                            stroke-width="48"
+                            strokeLinecap="square"
+                            strokeMiterlimit="10"
+                            strokeWidth="48"
                             d="M112 328l144-144 144 144"
                           ></path>
                         </svg>
@@ -285,7 +285,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navPath }) => {
                         <svg
                           stroke="currentColor"
                           fill="currentColor"
-                          stroke-width="0"
+                          strokeWidth="0"
                           viewBox="0 0 512 512"
                           height="1em"
                           width="1em"
@@ -293,9 +293,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navPath }) => {
                         >
                           <path
                             fill="none"
-                            stroke-linecap="square"
-                            stroke-miterlimit="10"
-                            stroke-width="48"
+                            strokeLinecap="square"
+                            strokeMiterlimit="10"
+                            // stroke-miterlimit="10"
+                            strokeWidth="48"
                             d="M112 184l144 144 144-144"
                           ></path>
                         </svg>

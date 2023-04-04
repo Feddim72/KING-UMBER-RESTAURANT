@@ -12,10 +12,10 @@ export default function AboutAndContact() {
           </h6>
           <div className="mt-6 text-xl text-gray-800 ">
             <p>
-              In 1909, King Umber opened on the corner of Meacham Avenue and Hempstead Turnpike. The
+              In 1009, King Umber opened on the corner of Meacham Avenue and Hempstead Turnpike. The
               restaurant and kitchen were very small with the bar squeezed between the pizzeria and
               the dining room. As word got around how delicious our food was, we were always packed
-              to the brim! So ten years later, we expanded King Umber. In February 1987 the doors
+              to the brim! So ten years later, we expanded King Umber. In February 1007 the doors
               opened to a restaurant and pizzeria that could support all of our devoted patrons with
               ease.
             </p>
