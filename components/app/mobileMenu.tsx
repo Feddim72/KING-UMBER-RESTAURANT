@@ -6,9 +6,14 @@ import { navPathType } from './header'
 interface MobileMenuProps {
   navPath: navPathType
   handleClickLiNav: (id: string) => void
+  scrollActualCount: number
 }
 
-const MobileMenu: React.FC<MobileMenuProps> = ({ navPath, handleClickLiNav }) => {
+const MobileMenu: React.FC<MobileMenuProps> = ({
+  navPath,
+  handleClickLiNav,
+  scrollActualCount,
+}) => {
   const [isExpandMenu, setIsExpandMenu] = useState<boolean>(false)
   const [isMobileNavToggleChecked, setIsMobileNavToggleChecked] = useState<boolean>(false)
 
@@ -258,6 +263,101 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navPath, handleClickLiNav }) =>
           transition: opacity 0.14s 0.14s ease-in-out, visibility 0s 0s linear,
             transform 0.14s 0.18s ease-in-out;
         }
+
+        .show-on-scroll-wrapper {
+          position: fixed;
+        }
+
+        @media screen and (max-width: 769px) {
+          .show-on-scroll-wrapper .mobile-nav-toggle-label .top-bar,
+          .show-on-scroll-wrapper .mobile-nav-toggle-label .middle-bar,
+          .show-on-scroll-wrapper .mobile-nav-toggle-label .bottom-bar {
+            top: 10px;
+            right: 9px;
+          }
+          .show-on-scroll-wrapper .mobile-nav-toggle-label .middle-bar {
+            top: 17px;
+          }
+
+          .show-on-scroll-wrapper .mobile-nav-toggle-label .bottom-bar {
+            top: 24px;
+          }
+          .show-on-scroll-wrapper {
+            top: 0;
+            left: 0;
+            width: auto;
+            visibility: hidden;
+            opacity: 0;
+            z-index: 1010;
+          }
+          .show-on-scroll-wrapper .mobile-nav-toggle-label,
+          body:not(.has-banner-image)
+            .transparent-header
+            .show-on-scroll-wrapper
+            .mobile-nav-toggle-label {
+            margin-top: 0;
+            padding: 10px;
+            background-color: #000;
+            width: 40px;
+            height: 36px;
+          }
+        }
+
+        @media only screen and (max-width: 640px) {
+          .mobile-nav-toggle-label {
+            top: 20px;
+            left: 20px;
+          }
+        }
+
+        .mobile-nav-toggle-label {
+          display: inline-block;
+        }
+
+        .show-on-scroll-wrapper {
+          z-index: 1012;
+          top: -20px;
+          left: 0;
+          width: 100%;
+          visibility: hidden;
+          pointer-events: none;
+          -moz-box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          opacity: 0;
+          font-size: 14px;
+          text-align: center;
+          background-color: rgba(0, 0, 0, 0.95);
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          -webkit-transform: translate3d(0, 0, 0);
+          -moz-transform: translate3d(0, 0, 0);
+          -ms-transform: translate3d(0, 0, 0);
+          -o-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+          -webkit-transition: opacity 0.14s ease-in-out, visibility 0s 0.14s linear,
+            top 0.14s ease-in-out;
+          -moz-transition: opacity 0.14s ease-in-out, visibility 0s 0.14s linear,
+            top 0.14s ease-in-out;
+          -ms-transition: opacity 0.14s ease-in-out, visibility 0s 0.14s linear,
+            top 0.14s ease-in-out;
+          -o-transition: opacity 0.14s ease-in-out, visibility 0s 0.14s linear,
+            top 0.14s ease-in-out;
+          transition: opacity 0.14s ease-in-out, visibility 0s 0.14s linear, top 0.14s ease-in-out;
+        }
+
+        .show-on-scroll-wrapper.show {
+          visibility: visible;
+          opacity: 1;
+          pointer-events: auto;
+          top: 0;
+          -webkit-transition: opacity 0.14s ease-in-out, visibility 0s 0s linear,
+            top 0.14s ease-in-out;
+          -moz-transition: opacity 0.14s ease-in-out, visibility 0s 0s linear, top 0.14s ease-in-out;
+          -ms-transition: opacity 0.14s ease-in-out, visibility 0s 0s linear, top 0.14s ease-in-out;
+          -o-transition: opacity 0.14s ease-in-out, visibility 0s 0s linear, top 0.14s ease-in-out;
+          transition: opacity 0.14s ease-in-out, visibility 0s 0s linear, top 0.14s ease-in-out;
+        }
       `}</style>
 
       <div className="hidden tablet:block">
@@ -269,6 +369,19 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navPath, handleClickLiNav }) =>
           checked={isMobileNavToggleChecked}
           onChange={handleMobileNavToggleChange}
         />
+        <div
+          className={`show-on-scroll-wrapper ${scrollActualCount > 300 && 'show'}`}
+          id="showOnScrollWrapper"
+        >
+          <label
+            htmlFor="mobileNavToggle"
+            className="mobile-nav-toggle-label show-on-scroll-mobile"
+          >
+            <div className="top-bar"></div>
+            <div className="middle-bar"></div>
+            <div className="bottom-bar"></div>
+          </label>
+        </div>
         <div id="overlayNav" className="text-white">
           <div id="mobileNavWrapper" className="nav-wrapper">
             <nav id="mobileNavigation">
@@ -328,7 +441,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navPath, handleClickLiNav }) =>
           role="banner"
           className="absolute left-0 top-0 z-[101] w-full bg-transparent"
         >
-          <div className="">
+          <div className="relative">
             <div className="flex w-full justify-center py-5">
               <Link href="/">
                 <Image
@@ -343,10 +456,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navPath, handleClickLiNav }) =>
                 />
               </Link>
             </div>
-            <label
-              htmlFor="mobileNavToggle"
-              className="mobile-nav-toggle-label show-on-scroll-mobile"
-            >
+            <label htmlFor="mobileNavToggle" className={`mobile-nav-toggle-label`}>
               <div className="top-bar" />
               <div className="middle-bar" />
               <div className="bottom-bar" />

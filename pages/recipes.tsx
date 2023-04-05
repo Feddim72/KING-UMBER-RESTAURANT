@@ -1,7 +1,9 @@
-import React from "react";
-
 const Recipes = () => {
-  return <div>Recipes</div>;
-};
+  return (
+    <div className="mt-[336px] flex min-h-32 items-center justify-center text-3xl">
+      Page recipes under development.
+    </div>
+  )
+}
 
-export default Recipes;
+export default Recipes

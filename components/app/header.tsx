@@ -135,7 +135,11 @@ export const Header = () => {
         </div>
       </header>
 
-      <MobileMenu handleClickLiNav={handleClickLiNav} navPath={navPath} />
+      <MobileMenu
+        scrollActualCount={scrollActualCount}
+        handleClickLiNav={handleClickLiNav}
+        navPath={navPath}
+      />
     </>
   )
 }
