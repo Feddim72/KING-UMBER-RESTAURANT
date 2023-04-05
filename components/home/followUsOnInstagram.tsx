@@ -7,7 +7,7 @@ export default function FollowUsOnInstagram() {
       className="flex flex-col items-center justify-center py-24 px-3 text-gray-8 tablet:py-10"
     >
       <h6 className=" mb-10 text-6xl">Follow us on Instagram</h6>
-      <div className="grid grid-cols-4 grid-rows-2 gap-4">
+      <div className="grid grid-cols-4 grid-rows-2 gap-4 mobileL:grid-cols-2">
         <Image
           style={{ objectFit: 'cover' }}
           className={'h-[218px] w-[302px]'}
