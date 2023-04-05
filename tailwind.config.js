@@ -147,8 +147,7 @@ module.exports = {
           overflowWrap: 'anywhere',
         },
         '.bg-pattern': {
-          background:
-            "url('/bg-pattern-left.svg') repeat-y , url('/bg-pattern-right.svg') repeat-y right ",
+          background: "url('/bg-21312.svg') repeat-y , url('/bg-132132.svg') repeat-y right ",
           backgroundSize: '16%',
         },
       })

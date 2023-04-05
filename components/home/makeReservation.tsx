@@ -4,7 +4,7 @@ export default function MakeReservation() {
   return (
     <div
       id="reservation"
-      className="landingThree flex flex-col items-center justify-center py-24  px-3"
+      className="flex flex-col items-center justify-center py-24 px-3  text-[#2d2820]"
     >
       <h3 className="mb-6 text-center text-4xl">
         {`Looking for a night out that's both cozy`}

@@ -87,14 +87,14 @@ a {
   text-shadow: 0px 0px 4px #000000;
 }
 
-.nav__link a {
+.nav__link li {
   display: inline-block;
   transition: all 0.33s ease-in-out;
 }
-.nav__link a:hover {
+.nav__link li:hover {
   transform: scale(1.2);
 }
 
-.landingThree {
-  color: #2d2820;
+.dropdown-menu__content.show {
+  opacity: 1;
 }

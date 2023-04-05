@@ -5,9 +5,10 @@ import { navPathType } from './header'
 
 interface MobileMenuProps {
   navPath: navPathType
+  handleClickLiNav: (id: string) => void
 }
 
-const MobileMenu: React.FC<MobileMenuProps> = ({ navPath }) => {
+const MobileMenu: React.FC<MobileMenuProps> = ({ navPath, handleClickLiNav }) => {
   const [isExpandMenu, setIsExpandMenu] = useState<boolean>(false)
   const [isMobileNavToggleChecked, setIsMobileNavToggleChecked] = useState<boolean>(false)
 
@@ -17,7 +18,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navPath }) => {
 
     document.body.style.overflow = isMobileNavToggleChecked ? 'auto' : 'hidden'
   }
-  const menuItems = navPath.map(({ name, expand, url }) => {
+  const menuItems = navPath.map(({ name, expand, url, id }) => {
     if (url) {
       return (
         <li key={name}>
@@ -26,14 +27,27 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navPath }) => {
           </Link>
         </li>
       )
-    } else {
-      return expand?.map(({ name, url }) => (
+    } else if (expand) {
+      return expand.map(({ name, url }) => (
         <li className={`${isExpandMenu ? 'block' : 'hidden'}`} key={name}>
           <Link onClick={() => handleMobileNavToggleChange()} href={url}>
             {name}
           </Link>
         </li>
       ))
+    } else {
+      return (
+        <li
+          onClick={() => {
+            handleMobileNavToggleChange()
+            id && handleClickLiNav(id)
+          }}
+          className="cursor-pointer uppercase"
+          key={name}
+        >
+          {name}
+        </li>
+      )
     }
   })
   return (
@@ -295,7 +309,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navPath }) => {
                             fill="none"
                             strokeLinecap="square"
                             strokeMiterlimit="10"
-                            // stroke-miterlimit="10"
                             strokeWidth="48"
                             d="M112 184l144 144 144-144"
                           ></path>

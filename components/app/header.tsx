@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import useCountSkroll from '../../hooks/useCountSkroll'
+import DropdownMenu from '../common/dropdownMenu'
 const MobileMenu = dynamic(() => import('./mobileMenu'))
 
 export type navPathType = {
@@ -17,7 +18,7 @@ export type navPathType = {
 }[]
 
 export const Header = () => {
-  const { route } = useRouter()
+  const { route, push } = useRouter()
   const isHomePage = route === '/'
   const { scrollActualCount } = useCountSkroll()
   const [navPath, setNavPath] = useState<navPathType>([
@@ -57,6 +58,10 @@ export const Header = () => {
     }
   }
 
+  const handleClickLiNav = (id: string) => {
+    isHomePage ? scrollToElement(id) : push('/').finally(() => scrollToElement(id))
+  }
+
   const menuItems = navPath.map(({ name, url, expand, id }) => {
     if (url) {
       return (
@@ -66,14 +71,22 @@ export const Header = () => {
       )
     } else if (expand) {
       return (
-        <li className="uppercase" key={name}>
-          {name}
-        </li>
+        <DropdownMenu key={name} title={name}>
+          <ul className="cursor-pointer uppercase">
+            {expand.map((item) => {
+              return (
+                <li className="whitespace-nowrap py-2 uppercase" key={item.name}>
+                  <Link href={item.url}>{item.name}</Link>
+                </li>
+              )
+            })}
+          </ul>
+        </DropdownMenu>
       )
     } else {
       return (
         <li
-          onClick={() => id && scrollToElement(id)}
+          onClick={() => id && handleClickLiNav(id)}
           className="cursor-pointer uppercase"
           key={name}
         >
@@ -122,7 +135,7 @@ export const Header = () => {
         </div>
       </header>
 
-      <MobileMenu navPath={navPath} />
+      <MobileMenu handleClickLiNav={handleClickLiNav} navPath={navPath} />
     </>
   )
 }
