@@ -1,0 +1,34 @@
+{
+  "catering": {
+    "pl": "katering",
+    "en": "catering"
+  },
+  "contactUs": {
+    "pl": "kontakt",
+    "en": "contact"
+  },
+  "diningRoom": {
+    "pl": "jadalnia",
+    "en": "dining-room"
+  },
+  "giftCard": {
+    "pl": "karta-podarunkowa",
+    "en": "gift-card"
+  },
+  "orderOnline": {
+    "pl": "zamowienie-online",
+    "en": "order-online"
+  },
+  "pizzeria": {
+    "pl": "pizzeria",
+    "en": "pizzeria"
+  },
+  "recipes": {
+    "pl": "przepisy-na-potrawy",
+    "en": "recipes"
+  },
+  "wineList": {
+    "pl": "lista-win",
+    "en": "wine-list"
+  }
+}

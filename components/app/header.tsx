@@ -1,6 +1,6 @@
+import { Link } from 'next-translate-routes'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import useCountSkroll from '../../hooks/useCountSkroll'
@@ -38,7 +38,7 @@ export const Header = () => {
     { url: '/', queryKey: 'followUsOnInstagram', name: `INSTAGRAM` },
     { url: '/', queryKey: 'aboutAndContact', name: `LOCATION` },
     { url: '/recipes', name: `RECIPES` },
-    { url: '/giftCards', name: `GIFT CARDS` },
+    { url: '/giftCard', name: `GIFT CARDS` },
     { url: '/orderOnline', name: `ORDER ONLINE` },
   ])
 

@@ -1,3 +1,4 @@
+import { withTranslateRoutes } from 'next-translate-routes'
 import type { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
 import 'tailwindcss/tailwind.css'
@@ -21,4 +22,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
 }
 
-export default MyApp
+export default withTranslateRoutes(MyApp)
