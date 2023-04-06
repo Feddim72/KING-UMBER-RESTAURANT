@@ -20,7 +20,7 @@ const MediaBackground = ({ mode }: { mode: MediaBackgroundMode }) => {
               <button onClick={() => push('/orderOnline')} className="button__nav">
                 ORDER ONLINE
               </button>
-              <button onClick={() => push('/buyGiftCards')} className="button__nav">
+              <button onClick={() => push('/giftCards')} className="button__nav">
                 BUY GIFT CARDS
               </button>
             </div>

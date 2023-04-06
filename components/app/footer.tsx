@@ -28,7 +28,7 @@ export default function Footer() {
         </Link>
       </div>
       <div className="flex w-full items-center justify-center bg-gray-17 py-12">
-        <Link href="/contact-us">
+        <Link href="/contactUs">
           <span className="text-xl text-white hover:text-gray-200">CONTACT US</span>
         </Link>
       </div>

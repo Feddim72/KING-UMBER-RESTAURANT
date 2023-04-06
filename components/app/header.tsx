@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import useCountSkroll from '../../hooks/useCountSkroll'
 import DropdownMenu from '../common/dropdownMenu'
 const MobileMenu = dynamic(() => import('./mobileMenu'))
@@ -14,11 +14,11 @@ export type navPathType = {
   }[]
   name: string
   url?: string
-  id?: string
+  queryKey?: string
 }[]
 
 export const Header = () => {
-  const { route, push } = useRouter()
+  const { route, query } = useRouter()
   const isHomePage = route === '/'
   const { scrollActualCount } = useCountSkroll()
   const [navPath, setNavPath] = useState<navPathType>([
@@ -32,11 +32,11 @@ export const Header = () => {
       name: `Menu`,
     },
     { url: '/', name: `HOME` },
-    { id: 'todaysSpecial', name: `TODAY'S SPECIAL` },
-    { id: 'reservation', name: `RESERVATIONS` },
-    { id: 'formBirhdaySpecialRewards', name: `BIRTHDAY CLUB` },
-    { id: 'followUsOnInstagram', name: `INSTAGRAM` },
-    { id: 'aboutAndContact', name: `LOCATION` },
+    { url: '/', queryKey: 'todaysSpecial', name: `TODAY'S SPECIAL` },
+    { url: '/', queryKey: 'reservation', name: `RESERVATIONS` },
+    { url: '/', queryKey: 'formBirhdaySpecialRewards', name: `BIRTHDAY CLUB` },
+    { url: '/', queryKey: 'followUsOnInstagram', name: `INSTAGRAM` },
+    { url: '/', queryKey: 'aboutAndContact', name: `LOCATION` },
     { url: '/recipes', name: `RECIPES` },
     { url: '/giftCards', name: `GIFT CARDS` },
     { url: '/orderOnline', name: `ORDER ONLINE` },
@@ -58,15 +58,12 @@ export const Header = () => {
     }
   }
 
-  const handleClickLiNav = (id: string) => {
-    isHomePage ? scrollToElement(id) : push('/').finally(() => scrollToElement(id))
-  }
-
-  const menuItems = navPath.map(({ name, url, expand, id }) => {
+  const menuItems = navPath.map(({ name, url, expand, queryKey }) => {
     if (url) {
+      const href = queryKey ? { pathname: url, query: { section: queryKey } } : url
       return (
         <li className="uppercase" key={name}>
-          <Link href={url}>{name}</Link>
+          <Link href={href}>{name}</Link>
         </li>
       )
     } else if (expand) {
@@ -83,18 +80,15 @@ export const Header = () => {
           </ul>
         </DropdownMenu>
       )
-    } else {
-      return (
-        <li
-          onClick={() => id && handleClickLiNav(id)}
-          className="cursor-pointer uppercase"
-          key={name}
-        >
-          {name}
-        </li>
-      )
     }
   })
+
+  useEffect(() => {
+    const querySection = query.section
+    if (typeof querySection == 'string') {
+      scrollToElement(querySection)
+    }
+  }, [query])
 
   return (
     <>
@@ -136,8 +130,9 @@ export const Header = () => {
       </header>
 
       <MobileMenu
+        isHomePage={isHomePage}
         scrollActualCount={scrollActualCount}
-        handleClickLiNav={handleClickLiNav}
+        scrollToElement={scrollToElement}
         navPath={navPath}
       />
     </>

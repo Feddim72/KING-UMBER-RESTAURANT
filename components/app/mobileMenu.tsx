@@ -5,14 +5,16 @@ import { navPathType } from './header'
 
 interface MobileMenuProps {
   navPath: navPathType
-  handleClickLiNav: (id: string) => void
+  scrollToElement: (id: string) => void
   scrollActualCount: number
+  isHomePage: boolean
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({
   navPath,
-  handleClickLiNav,
+  scrollToElement,
   scrollActualCount,
+  isHomePage,
 }) => {
   const [isExpandMenu, setIsExpandMenu] = useState<boolean>(false)
   const [isMobileNavToggleChecked, setIsMobileNavToggleChecked] = useState<boolean>(false)
@@ -23,11 +25,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 
     document.body.style.overflow = isMobileNavToggleChecked ? 'auto' : 'hidden'
   }
-  const menuItems = navPath.map(({ name, expand, url, id }) => {
+  const menuItems = navPath.map(({ name, expand, url, queryKey }) => {
     if (url) {
+      const href = queryKey ? { pathname: url, query: { section: queryKey } } : url
+
       return (
         <li key={name}>
-          <Link onClick={() => handleMobileNavToggleChange()} href={url}>
+          <Link onClick={() => handleMobileNavToggleChange()} href={href}>
             {name}
           </Link>
         </li>
@@ -40,19 +44,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           </Link>
         </li>
       ))
-    } else {
-      return (
-        <li
-          onClick={() => {
-            handleMobileNavToggleChange()
-            id && handleClickLiNav(id)
-          }}
-          className="cursor-pointer uppercase"
-          key={name}
-        >
-          {name}
-        </li>
-      )
     }
   })
   return (
@@ -439,7 +430,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
         <header
           id="header"
           role="banner"
-          className="absolute left-0 top-0 z-[101] w-full bg-transparent"
+          className={`absolute left-0 top-0 z-[101] w-full ${
+            isHomePage ? 'bg-transparent' : 'bg-black-transparent'
+          }`}
         >
           <div className="relative">
             <div className="flex w-full justify-center py-5">
