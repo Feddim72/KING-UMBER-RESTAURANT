@@ -56,7 +56,7 @@ a {
 }
 
 .bg-todays-specials {
-  background: url(../public/pizaabg.jpg) 50% / cover no-repeat;
+  background: url(../public/pizaabg.webp) 50% / cover no-repeat;
 }
 
 .height-webkit-fill-available {
