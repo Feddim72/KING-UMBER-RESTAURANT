@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function MakeReservation() {
   return (
     <div
-      id="reservation"
+      id="reservations"
       className="flex flex-col items-center justify-center py-24 px-3  text-[#2d2820]"
     >
       <h3 className="mb-6 text-center text-4xl">

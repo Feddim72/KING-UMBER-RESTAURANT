@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const withTranslateRoutes = require('next-translate-routes/plugin')
-const nextTranslate = require('next-translate')
+const nextTranslate = require('next-translate-plugin')
 module.exports = nextTranslate(
   withTranslateRoutes({
     i18n: {

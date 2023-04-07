@@ -1,5 +1,20 @@
 {
-  "menu": "Menu",
-  "home": "Strona główna",
-  "todaySpecial": "Today's special"
+  "nav": {
+    "menu": "Menu",
+    "diningRoom": "Karta menu",
+    "pizzeria": "Pizzeria",
+    "wineList": "Lista win",
+    "catering": "Katering",
+    "home": "Strona główna",
+    "todaysSpecial": "Oferty dnia",
+    "reservations": "Rezerwacja",
+    "formBirhdaySpecialRewards": "Klub urodzinowy",
+    "followUsOnInstagram": "Instagram",
+    "location": "Lokalizacja",
+    "recipes": "Przepisy",
+    "giftCard": "Karta podarunkowa",
+    "orderOnline": "Zamówienie online"
+  },
+  "restaurant": "Restauracja",
+  "buyGiftCard": "Kup kartę podarunkową"
 }

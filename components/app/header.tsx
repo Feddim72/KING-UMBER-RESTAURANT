@@ -1,4 +1,5 @@
 import { Link } from 'next-translate-routes'
+import useTranslation from 'next-translate/useTranslation'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -18,28 +19,34 @@ export type navPathType = {
 }[]
 
 export const Header = () => {
+  const { t } = useTranslation('')
+
   const { route, query } = useRouter()
   const isHomePage = route === '/'
   const { scrollActualCount } = useCountSkroll()
   const [navPath, setNavPath] = useState<navPathType>([
     {
       expand: [
-        { url: '/diningRoom', name: `Dining Room` },
-        { url: '/pizzeria', name: `Pizzeria` },
-        { url: '/wineList', name: `Wine list` },
-        { url: '/catering', name: `Catering` },
+        { url: '/diningRoom', name: t('common:nav.diningRoom') },
+        { url: '/pizzeria', name: t('common:nav.pizzeria') },
+        { url: '/wineList', name: t('common:nav.wineList') },
+        { url: '/catering', name: t('common:nav.catering') },
       ],
       name: `Menu`,
     },
-    { url: '/', name: `HOME` },
-    { url: '/', queryKey: 'todaysSpecial', name: `TODAY'S SPECIAL` },
-    { url: '/', queryKey: 'reservation', name: `RESERVATIONS` },
-    { url: '/', queryKey: 'formBirhdaySpecialRewards', name: `BIRTHDAY CLUB` },
-    { url: '/', queryKey: 'followUsOnInstagram', name: `INSTAGRAM` },
-    { url: '/', queryKey: 'aboutAndContact', name: `LOCATION` },
-    { url: '/recipes', name: `RECIPES` },
-    { url: '/giftCard', name: `GIFT CARDS` },
-    { url: '/orderOnline', name: `ORDER ONLINE` },
+    { url: '/', name: t('common:nav.home') },
+    { url: '/', queryKey: 'todaysSpecial', name: t('common:nav.todaysSpecial') },
+    { url: '/', queryKey: 'reservations', name: t('common:nav.reservations') },
+    {
+      url: '/',
+      queryKey: 'formBirhdaySpecialRewards',
+      name: t('common:nav.formBirhdaySpecialRewards'),
+    },
+    { url: '/', queryKey: 'followUsOnInstagram', name: t('common:nav.followUsOnInstagram') },
+    { url: '/', queryKey: 'location', name: t('common:nav.location') },
+    { url: '/recipes', name: t('common:nav.recipes') },
+    { url: '/giftCard', name: t('common:nav.giftCard') },
+    { url: '/orderOnline', name: t('common:nav.orderOnline') },
   ])
 
   const scrollToElement = (id: string) => {

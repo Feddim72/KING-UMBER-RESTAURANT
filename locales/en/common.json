@@ -1,1 +1,20 @@
-{}
+{
+  "nav": {
+    "menu": "Menu",
+    "diningRoom": "Dining Room",
+    "pizzeria": "Pizzeria",
+    "wineList": "Wine List",
+    "catering": "Catering",
+    "home": "Home",
+    "todaysSpecial": "Today's special",
+    "reservations": "Reservations",
+    "formBirhdaySpecialRewards": "Birthday club",
+    "followUsOnInstagram": "Instagram",
+    "location": "Location",
+    "recipes": "Recipes",
+    "giftCard": "Gift card",
+    "orderOnline": "Order online"
+  },
+  "restaurant": "Restaurant",
+  "buyGiftCard": "Buy gift card"
+}

@@ -3,10 +3,15 @@ module.exports = {
   defaultLocale: 'en',
   localeDetection: true,
   pages: {
-    '*': ['common', 'layout', 'enums', 'policies'],
+    '*': ['common'],
     '/': ['home'],
     '/404': ['common'],
-    '/faqHelp': ['faq'],
-    '/job-notifications': ['static-notifications', 'policies'], 
+    '/wineList': ['wineList'],
+    '/recipes': ['recipes'],
+    '/pizzeria': ['pizzeria'],
+    '/orderOnline': ['orderOnline'],
+    '/giftCard': ['giftCard'],
+    '/contactUs': ['contactUs'],
+    '/catering': ['catering'],
   },
 }

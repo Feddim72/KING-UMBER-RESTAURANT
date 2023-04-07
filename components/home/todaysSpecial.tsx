@@ -1,5 +1,5 @@
+import useTranslation from 'next-translate/useTranslation'
 import ItemMenu from './itemMenu'
-
 const todayMenu = [
   {
     name: 'Appetizers',
@@ -94,11 +94,14 @@ const todayMenu = [
 ]
 
 export default function TodaysSpecial() {
+  const { t } = useTranslation('')
   return (
     <div id="todaysSpecial" className="text--shadow relative min-h-screen w-full">
       <div className="bg-todays-specials flex min-h-screen w-full flex-col items-center pt-12 pb-11 ">
         <div className="height-webkit-fill-available width-webkit-fill-available absolute left-0 -top-[1px] bg-blackA-transparent" />
-        <h2 className="z-10 mb-6 px-4 text-5xl text-white mobileL:text-center mobileL:text-4xl">{`TODAY'S SPECIALS`}</h2>
+        <h2 className="z-10 mb-6 px-4 text-5xl text-white mobileL:text-center mobileL:text-4xl">
+          {t('common:nav.todaysSpecial')}
+        </h2>
         <div className="z-10 flex w-full max-w-7xl flex-row flex-wrap items-start justify-between tablet:justify-center">
           {todayMenu.map(({ name, items }, index) => (
             <div key={index} className="flex w-[380px] flex-col items-center justify-center p-4">
